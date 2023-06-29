@@ -103,7 +103,6 @@ export default function DataTableScrollArea({
   scrollAreaProps,
 }: DataTableScrollAreaProps) {
   const ScrollAreaComponent = maxHeight ? ScrollArea.Autosize : ScrollArea;
-  console.log(maxHeight, ScrollAreaComponent);
   const bottom = footerHeight ? footerHeight - 1 : 0;
   const { cx, classes } = useStyles();
   return (
