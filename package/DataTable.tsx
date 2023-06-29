@@ -115,6 +115,7 @@ export default function DataTable<T>({
   textSelectionDisabled,
   height = '100%',
   minHeight,
+  maxHeight,
   shadow,
   verticalAlignment = 'center',
   fetching,
@@ -327,6 +328,7 @@ export default function DataTable<T>({
       style={{ ...styleProperties?.root, ...style } as CSSProperties}
     >
       <DataTableScrollArea
+        maxHeight={maxHeight}
         viewportRef={useMergedRef(scrollViewportRef, scrollViewportRefProp || null)}
         topShadowVisible={!scrolledToTop}
         leftShadowVisible={!(selectedRecords || scrolledToLeft)}

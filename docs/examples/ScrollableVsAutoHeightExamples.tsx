@@ -1,5 +1,5 @@
 import { DataTable } from 'mantine-datatable';
-import employees from '~/data/employees.json';
+import { employees } from '~/data';
 
 const records = employees.slice(0, 15);
 
@@ -49,6 +49,33 @@ export function ScrollAreaPropsExample() {
       columns={[{ accessor: 'firstName' }, { accessor: 'lastName' }, { accessor: 'email' }]}
       // example-resume
       scrollAreaProps={{ type: 'never' }}
+    />
+    // example-end
+  );
+}
+
+export function ScrollAreaAutosizeExample() {
+  return (
+    // example-start scroll-area-autosize
+    <DataTable
+      maxHeight={300}
+      // example-skip other props
+      withBorder
+      withColumnBorders
+      striped
+      records={employees}
+      defaultColumnProps={{ noWrap: true }}
+      columns={[
+        { accessor: 'firstName' },
+        { accessor: 'lastName' },
+        { accessor: 'email' },
+        { accessor: 'department.company.name', title: 'Company' },
+        { accessor: 'department.name', title: 'Department' },
+        { accessor: 'department.company.city', title: 'City' },
+        { accessor: 'department.company.state', title: 'State' },
+        { accessor: 'department.company.missionStatement', title: 'Company mission' },
+      ]}
+      // example-resume
     />
     // example-end
   );

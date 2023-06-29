@@ -9,6 +9,7 @@ import PageText from '~/components/PageText';
 import PageTitle from '~/components/PageTitle';
 import {
   AutoHeightExample,
+  ScrollAreaAutosizeExample,
   ScrollAreaPropsExample,
   ScrollableExample,
 } from '~/examples/ScrollableVsAutoHeightExamples';
@@ -16,7 +17,7 @@ import readCodeExample from '~/lib/readCodeExample';
 
 const PATH = 'examples/scrollable-vs-auto-height';
 
-type ExampleName = 'scrollable' | 'auto-height' | 'scroll-area-props';
+type ExampleName = 'scrollable' | 'auto-height' | 'scroll-area-props' | 'scroll-area-autosize';
 
 export const getStaticProps: GetStaticProps<{
   code: Record<ExampleName, string>;
@@ -71,6 +72,21 @@ export default function Page({ code }: InferGetStaticPropsType<typeof getStaticP
       </PageText>
       <CodeBlock language="typescript" content={code['scroll-area-props']} />
       <ScrollAreaPropsExample />
+      <PageSubtitle value="Using ScrollArea.Autosize" />
+      <PageText>
+        If you want the <Code>DataTable</Code> to automatically adjust its height to fit the content, you can set its{' '}
+        <Code>maxHeight</Code> property. In this case, the <Code>DataTable</Code> will use a{' '}
+        <ExternalLink to="https://mantine.dev/core/scroll-area/#scrollareaautosize">
+          <Code>ScrollArea.Autosize</Code>
+        </ExternalLink>{' '}
+        instead of the default{' '}
+        <ExternalLink to="https://mantine.dev/core/scroll-area">
+          <Code>ScrollArea</Code>
+        </ExternalLink>{' '}
+        under the hood:
+      </PageText>
+      <ScrollAreaAutosizeExample />
+      <CodeBlock language="typescript" content={code['scroll-area-autosize']} />
       <PageNavigation of={PATH} />
     </Container>
   );

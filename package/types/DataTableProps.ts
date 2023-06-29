@@ -27,6 +27,11 @@ export type DataTableProps<T> = {
   minHeight?: string | number;
 
   /**
+   * Maximum table height
+   */
+  maxHeight?: string | number;
+
+  /**
    * `DataTable` component shadow
    */
   shadow?: MantineShadow;

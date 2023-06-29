@@ -76,6 +76,7 @@ const useStyles = createStyles((theme) => {
 });
 
 type DataTableScrollAreaProps = {
+  maxHeight: string | number | undefined;
   topShadowVisible: boolean;
   leftShadowVisible: boolean;
   rightShadowVisible: boolean;
@@ -89,6 +90,7 @@ type DataTableScrollAreaProps = {
 };
 
 export default function DataTableScrollArea({
+  maxHeight,
   topShadowVisible,
   leftShadowVisible,
   rightShadowVisible,
@@ -100,10 +102,13 @@ export default function DataTableScrollArea({
   viewportRef,
   scrollAreaProps,
 }: DataTableScrollAreaProps) {
+  const ScrollAreaComponent = maxHeight ? ScrollArea.Autosize : ScrollArea;
+  console.log(maxHeight, ScrollAreaComponent);
   const bottom = footerHeight ? footerHeight - 1 : 0;
   const { cx, classes } = useStyles();
   return (
-    <ScrollArea
+    <ScrollAreaComponent
+      mah={maxHeight}
       {...scrollAreaProps}
       viewportRef={viewportRef}
       classNames={{ root: classes.root, scrollbar: classes.scrollbar, thumb: classes.thumb, corner: classes.corner }}
@@ -121,6 +126,6 @@ export default function DataTableScrollArea({
         className={cx(classes.shadow, classes.bottomShadow, { [classes.shadowVisible]: bottomShadowVisible })}
         sx={{ bottom }}
       />
-    </ScrollArea>
+    </ScrollAreaComponent>
   );
 }
